@@ -38,8 +38,15 @@ export default {
 </script>
 
 <style>
+h1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 .main-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-right: 40px;
 }
 </style>
