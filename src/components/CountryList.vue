@@ -1,7 +1,6 @@
 <template lang="html">
   <div>
-      <!-- <list-item v-for="(country, index) in countries" :country="country" :key="index"></list-item> -->
-      <label for="country_select">Select a Country:</label>
+      <label for="country_select">Select a Country:</label><br>
           <select id="country_select" @change="handleChange" v-model="selectedCountry">
             <option disabled value="">Select a country</option>
             <option v-for="(country, index) in countries" :country="country" :key="index" :value="country">{{country.name}}</option>

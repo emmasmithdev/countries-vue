@@ -2,6 +2,7 @@
   <div id="app">
     <h1>Countries</h1>
     <div class="main-container">
+      <search-bar :country="searchCountry"></search-bar>
       <countries-list :countries="countries"></countries-list>
       <country-detail :country="selectedCountry"></country-detail>
     </div>
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+  import SearchBar from './components/SearchBar.vue';
   import CountryList from './components/CountryList.vue';
   import {eventBus} from './main.js';
   import CountryDetail from './components/CountryDetail.vue';
@@ -18,7 +20,8 @@ export default {
   data(){
     return {
       countries: [],
-      selectedCountry: null
+      selectedCountry: null,
+      searchCountry: null
     };
   },
   mounted(){
@@ -26,13 +29,21 @@ export default {
     .then(res => res.json())
     .then(countries => this.countries = countries)
 
-    eventBus.$on('country-selected', (country) => {
+    eventBus.$on('search-country', (country) => {
       this.selectedCountry = country
+    })
+
+    eventBus.$on('country-selected', (country) => {
+      // let foundCountry = this.countries.find((countryObject){
+      //   return countryObject.name === country
+      // })
+      this.selectedCountry = foundCountry
     })
   },
   components: {
     "countries-list": CountryList,
-    "country-detail": CountryDetail
+    "country-detail": CountryDetail,
+    "search-bar": SearchBar
   }
 }
 </script>
@@ -45,8 +56,9 @@ h1 {
   text-align: center;
 }
 .main-container {
-  display: flex;
-  justify-content: space-around;
-  margin-right: 40px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
 }
 </style>
