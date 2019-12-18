@@ -37,7 +37,7 @@ export default {
       // let foundCountry = this.countries.find((countryObject){
       //   return countryObject.name === country
       // })
-      this.selectedCountry = foundCountry
+      this.selectedCountry = country
     })
   },
   components: {
