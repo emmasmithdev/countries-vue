@@ -1,6 +1,8 @@
 <template lang="html">
   <div v-if="country">
     <h3>{{country.name}}</h3>
+    <p>Region: {{country.region}}</p>
+    <p>Population: {{country.population}}</p>
   </div>
 </template>
 
