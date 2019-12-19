@@ -4,7 +4,7 @@
     <div class="main-container">
       <search-bar :country="searchCountry"></search-bar>
       <countries-list :countries="countries"></countries-list>
-      <country-detail :country="selectedCountry"></country-detail>
+      <country-detail v-if="selectedCountry" :country="selectedCountry"></country-detail>
     </div>
   </div>
 </template>
@@ -29,14 +29,17 @@ export default {
     .then(res => res.json())
     .then(countries => this.countries = countries)
 
-    eventBus.$on('search-country', (country) => {
-      this.selectedCountry = country
+    eventBus.$on('search-country', (searchCountry) => {
+      this.countries.forEach((country) => {
+        if(searchCountry.length > 0){
+          if(country.name.toLowerCase().indexOf(searchCountry) !== -1){
+          }
+        }
+      })
+      this.selectedCountry = country;
     })
 
     eventBus.$on('country-selected', (country) => {
-      // let foundCountry = this.countries.find((countryObject){
-      //   return countryObject.name === country
-      // })
       this.selectedCountry = country
     })
   },

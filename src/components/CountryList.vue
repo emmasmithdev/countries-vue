@@ -1,9 +1,9 @@
 <template lang="html">
   <div>
       <label for="country_select">Select a Country:</label><br>
-          <select id="country_select" @change="handleChange" v-model="selectedCountry">
+          <select id="country_select" v-on:change="handleChange" v-model="selectedCountry">
             <option disabled value="">Select a country</option>
-            <option v-for="(country, index) in countries" :country="country" :key="index" :value="country">{{country.name}}</option>
+            <option v-for="(country, index) in countries" :key="index" :value="country">{{country.name}}</option>
           </select>
   </div>
 </template>

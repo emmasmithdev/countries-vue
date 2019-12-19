@@ -19,11 +19,6 @@ export default {
   props: ['countries'],
   methods: {
     handleSearch(event){
-      // for (country in this.countries){
-      //   if (country.name === this.searchCountry){
-      //     return country
-      //   }
-      // }
       eventBus.$emit('search-country', this.searchCountry)
     }
   }
